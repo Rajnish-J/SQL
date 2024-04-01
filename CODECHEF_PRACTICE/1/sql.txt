@@ -1,0 +1,66 @@
+SQL IMPORTANT QUESTIONS:
+1) Which SQL statement is used to add a new column to an existing table? 
+ANS: ALTER TABLE
+2) Which SQL statement is used to delete a row from the table? 
+ANS: DELETE
+3) Which SQL statement is used to round a numeric column to the nearest integer value? 
+ANS: ROUND
+4) What does the NOT LIKE operator do in SQL? 
+ANS: Matches string values that do not match a pattern.
+5) What does the JOIN keyword do in SQL? 
+ANS: Returns only matched rows from both tables.
+6) What does the UNION operator do in SQL? 
+ANS: Combines rows from two or more tables and removes duplicates.
+7) How can you calculate the average age of male customers in the "customers" table? 
+ANS: SELECT AVG(age) FROM customers WHERE gender = 'Male';
+8) How can you retrieve the top 4 movies with the highest ratings from the "movies" table? 
+ANS: SELECT * FROM movies ORDER BY rating DESC LIMIT 4;
+9) How can you retrieve the movie titles and ratings of movies with a rating greater than 8.5? 
+ANS: SELECT title, rating FROM movies WHERE rating > 8.5;
+10) How can you retrieve the highest rating for each genre? 
+ANS: SELECT genre, MAX(rating) FROM movies GROUP BY genre;
+11) Which SQL statement is used to calculate the total number of bookings for each movie genre? 
+ANS: SELECT genre, COUNT(*) FROM movies 
+     JOIN bookings ON movies.movie_id = bookings.movie_id 
+     GROUP BY genre;  
+12) Which SQL statement is used to retrieve the customers who made more than 2 bookings?
+ANS: SELECT c.name FROM customers c JOIN bookings b 
+     ON c.customer_id = b.customer_id 
+     GROUP BY c.customer_id 
+     HAVING COUNT(*) > 2;
+13) How can you calculate the percentage of male customers in the "customers" table?
+ANS: SELECT AVG(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) * 100 
+     FROM customers;
+14) How can you retrieve the customer who has made the most bookings?
+ANS: SELECT c.name, COUNT(*) AS booking_count FROM customers c  
+     JOIN bookings b ON c.customer_id = b.customer_id 
+     GROUP BY c.customer_id 
+     ORDER BY booking_count DESC LIMIT 1;
+15) Which SQL query can be used to list the names and ages of customers who have booked tickets for the movie with movie_id = 5?
+ANS: SELECT name, age FROM customers 
+     WHERE customer_id IN (SELECT customer_id FROM bookings 
+                           WHERE movie_id = 5);
+16) write an SQL query to retrieve the count of bookings for each genre?
+ANS: SELECT m.genre, COUNT(b.booking_id) AS booking_count FROM movies m
+     LEFT JOIN bookings b ON m.movie_id = b.movie_id
+     GROUP BY m.genre;
+17) List the movie titles and their corresponding average ticket quantities?
+ANS: SELECT m.title, AVG(ticket_quantity) AS average_ticket_quantity FROM movies m
+     JOIN bookings b ON m.movie_id = b.movie_id
+     GROUP BY m.title;
+18) Retrieve the customer names and their email IDs for bookings made on the date '5th June 2023'?
+ANS: SELECT c.name, c.email_id FROM customers c
+     JOIN bookings b ON c.customer_id = b.customer_id
+     WHERE b.booking_date = '2023-06-05';
+19) Get the details of the movies with the highest rating?
+ANS: SELECT * FROM movies
+     WHERE rating = (SELECT MAX(rating) FROM movies);
+20) Retrieve the customer ID, name, and assign an age group based on the customer's age using the CASE statement?
+ANS: SELECT customer_id, name,
+     CASE
+     WHEN age < 18 THEN 'Minor'
+     WHEN age >= 18 AND age < 30 THEN 'Young Adult'
+     WHEN age >= 30 AND age < 60 THEN 'Adult'
+     ELSE 'Senior'
+     END AS age_group
+     FROM customers;
