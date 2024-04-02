@@ -1,0 +1,9 @@
+/*
+his case study scenario involves the details about the companies, their earning in each quarter, their performance in the recession year 2022-2023 and many more.
+You have been given a dataset containing multiple tables associated with the case study.
+Now, let's explore some objective questions related to the given case study.
+*/
+
+1) Many times from group of rows, you want to find some specific top 1,2 or 5 rows.
+   So, Which of the following commands is/are used to put a restriction on the number of rows returned from a query?
+ANS: 
