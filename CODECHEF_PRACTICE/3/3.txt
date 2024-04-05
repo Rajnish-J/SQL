@@ -6,4 +6,12 @@ Now, let's explore some objective questions related to the given case study.
 
 1) Many times from group of rows, you want to find some specific top 1,2 or 5 rows.
    So, Which of the following commands is/are used to put a restriction on the number of rows returned from a query?
-ANS: 
+ANS: LIMIT
+
+2) Which of the following is known as the minimal super key?
+ANS: Candidate key
+
+3) As you already know which company is under which risk category. You want to know which company/companies are having minimum growth percent. 
+   Rearrange the following query for getting the output for above query
+ANS: SELECT Company_Name FROM ci
+     Where Growth_Percent IN (SELECT MIN (Growth_Percent) FROM ci);
