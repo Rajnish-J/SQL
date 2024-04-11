@@ -15,3 +15,30 @@ ANS: Candidate key
    Rearrange the following query for getting the output for above query
 ANS: SELECT Company_Name FROM ci
      Where Growth_Percent IN (SELECT MIN (Growth_Percent) FROM ci);
+
+4) Which of the following is/are not an Aggregate function?
+ANS: GROUP BY, HAVING
+     LOWER, SORT
+     Explanation:
+     LOWER, SORT: "LOWER" function is not an aggregate function. It is commonly used in databases and programming languages to convert a string to lowercase. 
+                  SORT is not an aggregate function but rather a function used for ordering or sorting the data.
+
+     GROUP BY, HAVING: GROUP BY and HAVING are not aggregate functions either. 
+                       GROUP BY is used to group rows based on a specified column or columns, and HAVING is used to filter groups based on a condition.
+
+5) Which of the following commands come under DCL (Data Control Language) ?
+ANS: GRANT, REVOKE.
+     Explanation:
+     GRANT, REVOKE: GRANT is used to provide user privileges or permissions on database objects, while REVOKE is used to revoke or remove previously granted privileges.
+
+6) Retrieve the number of companies in each sector that have shown negative growth, as this will indicate which sectors have been impacted by the economic slowdown? 
+ANS: SELECT Sector, COUNT (*) AS NumCompanies FROM Company_Information AS ci
+     WHERE Growth_Percent < 0 GROUP BY Sector;
+
+7) NULL is?
+ANS: Not a value
+     Explanation:
+     NULL is a special value in databases that represents the absence of a value or the unknown state. It is not the same as 0 for integers or blank for characters. 
+     It signifies the absence of any specific value or a missing value in a particular field or column.
+
+8)
