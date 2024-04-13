@@ -41,4 +41,82 @@ ANS: Not a value
      NULL is a special value in databases that represents the absence of a value or the unknown state. It is not the same as 0 for integers or blank for characters. 
      It signifies the absence of any specific value or a missing value in a particular field or column.
 
-8)
+8) Which of the following commands is used to delete all rows and free up space from a table?
+ANS: TRUNCATE
+     Explanation:
+     TRUNCATE: The TRUNCATE command is used to remove all data from a table, deleting all rows and releasing the allocated space. 
+     It is a faster operation compared to the DELETE command, as it does not generate individual undo logs for each deleted row.
+
+9) Retrieve the number of companies in each headquarters, along with their respective headquarters names, 
+   and sort the data in descending order based on the total number of companies. Rearrange the following query for getting the output for above query.
+ANS: SELECT ch.HeadQuaters, COUNT(ch.Nation_id) AS Companies_Count FROM Company_Information AS ci
+     JOIN Company_HeadQuarter AS ch ON ci.Company_HQ_id = ch.Nation_id 
+     GROUP BY ch.HeadQuaters 
+     ORDER BY Companies_Count DESC;
+
+10) What is a table joined with itself called?
+ANS: Self Join
+     Explanation:
+     A self-join is a type of join operation in SQL where a table is joined with itself based on a common column or condition. 
+     In a self-join, the table is treated as two separate entities, often with aliases assigned to distinguish between them. 
+     By comparing the values in the common column(s) between the two instances of the table, you can retrieve related data from within the same table. 
+     Self-joins are useful when you want to compare records or establish relationships between different rows within the same table.
+
+11) What is the name of the query that is placed within a WHERE or HAVING clause of another query?
+ANS: Sub Query
+     Explanation:
+     A subquery, also known as a nested query or inner query, is a query that is placed within the parentheses of another query. 
+     It is used to retrieve data based on the results or conditions of the outer query. 
+     The subquery is executed first, and its result is then used in the outer query to further filter or manipulate the data. 
+     Subqueries are commonly used to perform complex filtering, join operations, or calculations in SQL queries.
+
+12) List the names of companies that are classified as very large in size, have shown a positive growth percent (earning more than the previous year), 
+    and have made a positive impact on the country's growth. Rearrange the following query for getting the output for above query.
+ANS: SELECT ci.Company_Name FROM Company_Information AS ci
+     INNER JOIN Company_WorkForce AS cw ON ci.Company_Size_id = cw.Company_id
+     WHERE cw.Company_size = 'Very Large' AND ci.Growth_Percent > 0;
+
+12) "AS" Clause is used in SQL for?
+ANS: Rename operation.
+     Explanation:
+     The "AS" clause in SQL is used for the rename operation. It allows you to assign an alias or alternative name to a column or a table in the result set of a query. 
+     This alias can be used to refer to the column or table with the new name in the rest of the query.
+
+13) Which operator performs pattern matching?
+ANS: LIKE Operator
+     Explanation:
+     The LIKE operator is used in SQL to perform pattern matching with wildcard characters. It allows you to search for strings that match a specific pattern, 
+     using wildcards such as '%' (matches any sequence of characters) and '_' (matches any single character). 
+     This operator is commonly used in conjunction with the SELECT statement and the WHERE clause to filter rows based on pattern matching criteria.
+
+14) In the fourth quarter, every company has reported their Q4_Result. 
+    Now, it's time to identify the top company in each sector that has generated the highest earnings within their respective sectors during quarter 4. 
+    Rearrange the following query for getting the output for above query.
+ANS: SELECT t1.Sector, t1.Company_Name, t1.Q4_Result FROM Company_Information AS t1
+     WHERE t1.Q4_Result = (SELECT MAX (Q4_Result)
+                           FROM Company_Information AS t2
+                           WHERE t2.Sector = t1.Sector)
+                           GROUP BY t1.Sector;
+
+15) In SQL, which command is used to change a tables storage characteristic?
+ANS: ALTER table
+     Explanation:
+     The ALTER TABLE command is used to modify the structure or properties of an existing table in a database. 
+     It allows you to add, modify, or drop columns, constraints, indexes, and other table-related objects. 
+     By using the ALTER TABLE command, you can also change the storage characteristics of a table, such as modifying the storage engine, specifying the filegroup, 
+     or adjusting other storage-related settings.
+
+16) In SQL, which of the following is not a data definition language command?
+ANS: UPDATE
+     Explanation:
+     UPDATE is a data manipulation language (DML) command used to modify the data within a table. 
+     It is used to update existing records in a table by changing the values of specific columns based on specified conditions. 
+     DDL commands, on the other hand, are used to define and manage the structure of the database, such as creating tables, 
+     altering table structures, defining constraints, granting/restricting access, etc.
+
+17) Identify the companies that have exhibited the highest growth in their respective company size categories during the first quarter (Q1_Result). 
+    Rearrange the following query for getting the output for above query.
+ANS: SELECT t1.Company_Name, t1.Company_Size_id, t1.Q1_Result FROM Company_Information AS t1
+     JOIN ( SELECT Company_Size_id, MAX (Q1_Result) AS Max_Q1_Result FROM Company_Information AS ci
+            GROUP BY Company_Size_id) AS t2 ON t1.Company_Size_id = t2.Company_Size_id 
+            AND t1.Q1_Result = t2.Max_Q1_Result;
