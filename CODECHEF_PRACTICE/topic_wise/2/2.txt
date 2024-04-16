@@ -1,0 +1,38 @@
+Case Study - ABC Cab-booking App
+
+1) Which JOIN type returns only the rows that have matching values in both tables?
+ANS: INNER JOIN.
+
+2) Which JOIN type returns all the rows from the right table and the matching rows from the left table?
+ANS: RIGHT JOIN.
+
+3) Which JOIN type returns all the rows from both tables, regardless of whether they have matching rows or not?
+ANS: FULL JOIN.
+
+4)  In a LEFT JOIN operation, which table's rows are included in the result, even if there is no matching row in the other table?
+ANS: Left table.
+
+5) Which table in the case study schema stores information about the users' complaints?
+ANS: user_complaints
+
+6) Which JOIN type combines rows from two or more tables based on a condition that is not related to a specific column?
+ANS: CROSS JOIN.
+
+7) What's the correct output for the below query: 
+   SELECT reason FROM category_description
+   WHERE category_id = 4;
+ANS: unclean vehicles.
+     unpleasant odors.
+
+8) “taking incorrect routes” is associated with which of the following complaint categories?
+ANS: poor navigation.
+
+9) Apply JOINs and fetch the category ID, category name, subcategory ID, and reason for the category with ID 1.
+ANS: SELECT cc.category_id, cc.category_name, cd.subcategory_id, cd.reason
+     FROM category_description cd INNER JOIN complaint_category cc ON cc.category_id = cd.category_id
+     WHERE cc.category_id = 1 ;
+
+10) Combine the user_information and complaint_status tables using a CROSS JOIN and fetch the first 5 rows. What do you see?
+ANS: SELECT * FROM user_information ui
+     CROSS JOIN complaint_status cs
+     LIMIT 5;

@@ -1,0 +1,52 @@
+Aggregates & Group By
+
+1) Which among the given options is(are) not an aggregate function (syntactically)?
+ANS: ADD, AVERAGE
+     Explanation:
+     AVG is the correct syntax for average function that's why AVERAGE is a correct option. Because Syntactically AVERAGE is wrong.
+
+2) Spot the Error in following query: Select count(),user_name from Users;
+ANS: Column name not specified in count function.
+
+3) Determine the output of following Query: select MAX(rating) from Users;
+ANS: 3017
+
+4) What is the return type of count function ?
+ANS: int
+
+5) Which among the given queries is(are) incorrect?
+ANS: select SUM(rating,age) from Users;
+     select COUNT(users) from Users;
+
+6) Till how many levels ( maximum ) can we nest Aggregate functions ?
+ANS: 2
+     Explanation:
+     Nesting of aggregate functions means using one aggregate function inside another i.e. 
+     output of one aggregate function is used as input for another aggregate function. 
+     Example : SELECT AVG(SUM(column_name)) AS avg_sum_value FROM table_name;
+
+7) Choose the Output of following query : select MIN(college) from Users;
+ANS: Caltech
+     Explanation:
+     MIN treats the varchar values as strings and finds the minimum value by comparing their characters from left to right ( lexicographical order ).
+
+8) Which among the given options is(are) correct about aggregate functions?
+ANS: SUM() returns the summation of all non-NULL values    
+     MAX() return the maximum value for the specified column name
+
+9) Mark the output of following query for the below Given_table: Select count(*) from Given_table;
+
+Given_table :-
+column1	column2
+NULL	NULL
+NULL	NULL
+
+ANS: 2
+
+10) Rearrange the query to print user_name & category of users depending on ratings;
+ANS: select user_name , case
+     when rating between 1800 and 1999 then "4 Star"
+     when rating between 2000 and 2199 then "5 Star"
+     when rating between 2200 and 2499 then "6 Star"
+     else "None" end as category
+     from Users group by user_name;
