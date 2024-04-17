@@ -1,0 +1,35 @@
+Case Study - HappyHaven Home Rental App
+
+1) Which of the following statements about subqueries is true?
+ANS: Subqueries can be used in various parts of a SQL statement.
+
+2) What is the purpose of a subquery?\
+ANS: To filter or retrieve data based on a condition.
+
+3) In which clause is a subquery typically used?
+ANS: WHERE clause
+
+4) Which type of subquery is executed once for the entire outer query?
+ANS: Scalar subquery
+
+5) Which keyword is used to compare a subquery result with a column value in the outer query?
+ANS: IN
+
+6) Which type of subquery can reference columns from the outer query?
+ANS: Correlated subquery
+
+7) What is the maximum number of subqueries that can be nested in a single SQL statement?
+ANS: There is no specific limit.
+
+8) Which of the following is not a valid use case for subqueries?
+ANS: Inserting data into a table.
+
+9) Retrieve the names and user IDs of users who have not made any bookings in the HappyHaven Home Rental App?
+ANS: SELECT user_id, name FROM Users
+     WHERE user_id NOT IN ( SELECT DISTINCT user_id FROM Bookings);
+
+10) Retrieve the details of properties located in countries that have names containing "France," "Germany," or "UK" and have pending payments for bookings?
+ANS: SELECT * FROM Properties prop
+     INNER JOIN Bookings bk ON prop.property_id = bk.property_id
+     WHERE prop.location LIKE '%France%' OR prop.location LIKE '%Germany%' OR prop.location LIKE '%UK%'
+     AND bk.booking_id NOT IN ( SELECT booking_id FROM Payments);
