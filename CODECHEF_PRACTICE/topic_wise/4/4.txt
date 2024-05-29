@@ -1,0 +1,41 @@
+Library Management System
+
+1) What is the purpose of a CASE WHEN expression in SQL?
+ANS: To conditionally assign values or perform transformations based on specified conditions.
+
+2) What is the purpose of the ELSE statement in a CASE WHEN expression?
+ANS: It provides the default value or action when none of the previous conditions are met.
+
+3) Which option represents the correct syntax for using CASE WHEN in SQL?
+
+(a) CASE column_name WHEN value THEN result END
+(b) CASE column_name WHEN value THEN result ELSE other_result END
+(c) CASE WHEN column_name = value THEN result ELSE other_result END
+(d) CASE WHEN column_name = value THEN result END
+ANS: (c)
+
+4) Which option represents the correct syntax for using CASE WHEN with multiple conditions in SQL?
+
+(a) CASE column_name WHEN value THEN result WHEN value2 THEN result2 END
+(b) CASE WHEN column_name = value THEN result WHEN column_name = value2 THEN result2 ELSE other_result END
+(c) column_name WHEN value THEN result ELSE WHEN value2 THEN result2 END
+(d) CASE WHEN column_name = value THEN result WHEN column_name = value2 THEN result2 END
+ANS: (b)
+
+5) What is the output of the following expression?
+    SELECT title FROM Books WHERE genre LIKE '%Science%';
+
+(a) Returns the titles of books containing the word 'Science' in the genre.
+(b) Returns the count of books containing the word 'Science' in the genre.
+(c) Returns the titles of books not categorized as 'Science Books'.
+(d) Returns the count of books not categorized as 'Science Books'.
+ANS: (a)
+
+6)  What is the output of the following CASE WHEN expression?
+    SELECT title, CASE WHEN genre = 'Mechanical' THEN publication_year ELSE NULL END AS Mechanical_Books FROM Books;
+
+(a) The "Mechanical_Books" column will contain the publication_year for all books with the 'Mechanical' genre and NULL for other genres.
+(b) The "Mechanical_Books" column will contain the title for all books with the 'Mechanical' genre and NULL for other genres.
+(c) The "Mechanical_Books" column will contain the genre for all books with the 'Mechanical' genre and NULL for other genres.
+(d) The "Mechanical_Books" column will contain the title for all books in the dataset, regardless of their genre.
+ANS: (a)
