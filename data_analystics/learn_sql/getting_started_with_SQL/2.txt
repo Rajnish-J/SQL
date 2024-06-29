@@ -1,4 +1,44 @@
-update table
+Alter table: 
+
+The ALTER statement is used to append a new column to an existing table.
+Below is the query to add a new column 'Department' and set a default value, to the existing table student.
+
+    ALTER TABLE student
+    ADD COLUMN Department TEXT default NULL;
+While altering the table we can either keep the newly added column blank or we could set a default value (as mentioned above) to it. Lets run the query by adding a default value to the newly added column.
+
+Task
+Write a query to do the following
+
+Add a column 'Designation' to the table 'employee' and set 'Null' as the default value.
+Output the entire table.
+Original table has the following rows
+┌─────────────┬────────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │
+├─────────────┼────────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │
+│ 2           │ Ethan Chen     │ Operations │
+│ 3           │ Julia Lee      │ Hr         │
+└─────────────┴────────────────┴────────────┘
+
+Task:
+
+alter table employee
+add column Designation TEXT default NULL;
+
+select * from employee;
+
+┌─────────────┬────────────────┬────────────┬─────────────┐
+│ Employee_id │ Employee_Name  │ Department │ Designation │
+├─────────────┼────────────────┼────────────┼─────────────┤
+│ 1           │ Kayla Thompson │ Sales      │ NULL        │
+│ 2           │ Ethan Chen     │ Operations │ NULL        │
+│ 3           │ Julia Lee      │ Hr         │ NULL        │
+└─────────────┴────────────────┴────────────┴─────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+update table: 
 
 The UPDATE statement is used to edit a row or multiple rows in a table.
 Below is the query to Set the Age as 6, for the student with student_id - 23 to the existing table student.
@@ -22,15 +62,26 @@ Original table has the following entries
 │ 3           │ Julia Lee      │ Hr         │
 └─────────────┴────────────────┴────────────┘
 
-UPDATE employee
-SET Department = 'HR'
-WHERE Employee_id = 02;
+Task: 
+
+update employee
+set Department = 'HR'
+where employee_id = 02;
 
 select * from employee;
 
+┌─────────────┬────────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │
+├─────────────┼────────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │
+│ 2           │ Ethan Chen     │ HR         │
+│ 3           │ Julia Lee      │ Hr         │
+└─────────────┴────────────────┴────────────┘
+
 ________________________________________________________________________________________________________________________________________________________________________________
 
-Practice Problem - Alter table
+Alter table: 
+
 You are given a table - employee (mentioned below)
 
 Write a query which does the following
@@ -46,4 +97,160 @@ Original table has the following rows
 │ 3           │ Julia Lee      │ Operations │
 │ 4           │ Marcus Garcia  │ Hr         │
 └─────────────┴────────────────┴────────────┘
+
+Task: 
+
+alter table employee
+add column Hourly_Pay INT default 100;
+
+select * from employee;
+
+┌─────────────┬────────────────┬────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │ Hourly_Pay │
+├─────────────┼────────────────┼────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │ 100        │
+│ 2           │ Ethan Chen     │ Hr         │ 100        │
+│ 3           │ Julia Lee      │ Operations │ 100        │
+│ 4           │ Marcus Garcia  │ Hr         │ 100        │
+└─────────────┴────────────────┴────────────┴────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Update table
+In the previous problem we've added a new column 'Hourly_Pay'(mentioned below).
+Now write a query which does the following
+
+Set the 'Hourly_Pay' to 150 for the employees in Hr department.
+Output all the entries of table.
+Original table 'employee' has the following rows
+┌─────────────┬────────────────┬────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │ Hourly_Pay │
+├─────────────┼────────────────┼────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │ 100        │
+│ 2           │ Ethan Chen     │ Hr         │ 100        │
+│ 3           │ Julia Lee      │ Operations │ 100        │
+│ 4           │ Marcus Garcia  │ Hr         │ 100        │
+└─────────────┴────────────────┴────────────┴────────────┘
+
+Task: 
+
+update employee
+set hourly_pay = 150
+where Department = 'Hr';
+
+select * from employee;
+
+┌─────────────┬────────────────┬────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │ Hourly_Pay │
+├─────────────┼────────────────┼────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │ 100        │
+│ 2           │ Ethan Chen     │ Hr         │ 150        │
+│ 3           │ Julia Lee      │ Operations │ 100        │
+│ 4           │ Marcus Garcia  │ Hr         │ 150        │
+└─────────────┴────────────────┴────────────┴────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Delete From
+The DELETE FROM statement is used to remove one or multiple rows from a table.
+You can use the statement when you want to delete existing records.
+
+Below is the query to delete all rows in the student table with student_id - 08 (table added below for reference).
+
+DELETE FROM  student
+WHERE student_id = 08;
+Task
+Write a query which does the following
+
+Delete all rows in the employee table whose Department is 'Hr'.
+Output all the entires of the table
+Original table has the following rows
+┌─────────────┬────────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │
+├─────────────┼────────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │
+│ 2           │ Ethan Chen     │ Operations │
+│ 3           │ Julia Lee      │ Hr         │
+│ 4           │ Marcus Garcia  │ Product    │
+└─────────────┴────────────────┴────────────┘
+
+Task: 
+
+Delete from employee
+where Department = 'Hr';
+
+select * from employee;
+
+┌─────────────┬────────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │
+├─────────────┼────────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │
+│ 2           │ Ethan Chen     │ Operations │
+│ 4           │ Marcus Garcia  │ Product    │
+└─────────────┴────────────────┴────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Constraints
+Constraints provide details about the usage of a column and are applied after specifying the column's data type.
+They enable the database to reject any inserted data that violates a particular constraint.
+The following statement is used to impose constraints on the "employee" table.
+
+Below is the query to create a table student with a set of constraints.
+
+     CREATE TABLE  student(
+     student_id INTEGER PRIMARY KEY,
+     student_Name TEXT UNIQUE,
+     Department TEXT NOT NULL); 
+PRIMARY KEY can be utilized to uniquely identify a row in a table.
+When attempting to insert a row with the same value as an existing row in the table, a constraint violation will occur, preventing the insertion of the new row.
+UNIQUE columns contain distinct values for each row, similar to "PRIMARY KEY" columns, but unlike primary key columns, a table can have multiple unique columns..
+NOT NULL columns must have a value assigned to them.
+When attempting to insert a row without providing a value for a "NOT NULL" column, a constraint violation will occur, preventing the insertion of the new row.
+Task
+Write a query to create a table employee with the mentioned constraints on the columns :
+
+employee_id - INTEGER PRIMARY KEY,
+employee_Name - TEXT UNIQUE,
+Department - TEXT NOT NULL
+
+create table employee(
+employee_id INTEGER PRIMARY KEY,
+employee_name TEXT UNIQUE,
+Department TEXT NOT null
+);
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Delete From
+You are given a table - employee (mentioned below).
+
+Write a query which does the following
+
+Delete the row where the department is Client.
+Output the entire table.
+Original table has the following rows
+┌─────────────┬────────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │
+├─────────────┼────────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │
+│ 2           │ Ethan Chen     │ Operations │
+│ 3           │ Julia Lee      │ Client     │
+│ 4           │ Marcus Garcia  │ Product    │
+└─────────────┴────────────────┴────────────┘
+
+Delete from employee
+where department = 'Client';
+
+select * from employee;
+
+┌─────────────┬────────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │
+├─────────────┼────────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │
+│ 2           │ Ethan Chen     │ Operations │
+│ 4           │ Marcus Garcia  │ Product    │
+└─────────────┴────────────────┴────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
 

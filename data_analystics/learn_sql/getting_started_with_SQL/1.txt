@@ -1,11 +1,6 @@
 Introduction
 Welcome to the 1 st module on Learn SQL syntax. Some important points
 
-At the end of this learning path, you will be able to understand and interpret queries written in SQL
-
-Please feel free to give us your feedback for each problem / solution / module.
-
-Help us get better.
 Structured Query Language (SQL) is a programming language specifically created to access, organise and manipulate data within relational databases. 
 In a relational database, information is arranged into one or more tables, each containing columns and rows of interconnected data entries that relate to each other in some way.
 
@@ -94,9 +89,9 @@ Update the blanks below to solve this problem */
 
 CREATE TABLE employee
 (
-    Employee_id INT , /* Integer Data type assigned to the variable */
-    Employee_Name TEXT, /* TEXT Data type assigned to the variable */
-    Department TEXT /* TEXT Data type assigned to the variable */
+    Employee_id INT ,
+    Employee_Name TEXT,
+    Department TEXT
 );
 
 
