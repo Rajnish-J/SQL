@@ -1,0 +1,208 @@
+Introduction to Queries
+In this module, let us learn the different commands to QUERY a single table database.
+
+Queries are used to talk to the database and carry out specific actions
+
+Throughout this module, let us use the Flights table to understand how passengers have booked their flight tickets.
+
+┌──────────────┬────────────────┬────────┬──────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │  Origin  │ Destination │
+├──────────────┼────────────────┼────────┼──────────┼─────────────┤
+│ 10001        │ Jackson        │ Male   │ Mumbai   │ New York    │
+│ 10002        │ Riya           │ Female │ Mumbai   │ Delhi       │
+│ 10003        │ Roy            │ Male   │ London   │ Delhi       │
+│ 10004        │ Anthony        │ Male   │ Mumbai   │ Cairo       │
+│ 10005        │ Salim          │ Male   │ Ohio     │ New York    │
+│ 10006        │ Dia            │ Female │ New York │ Cairo       │
+│ 10007        │ Jackson        │ Male   │ New York │ London      │
+│ 10008        │ Dia            │ Female │ Beijing  │ Mumbai      │
+│ 10009        │ Riya           │ Female │ Damascus │ Mumbai      │
+│ 10010        │ Betty          │ Female │ Beijing  │ Cairo       │
+└──────────────┴────────────────┴────────┴──────────┴─────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+SELECT Query:
+As you saw in the problem earlier, the Flights table had the following information in columns
+
+Passenger_id with datatype INT
+Passenger_name with datatype VARCHAR
+Gender with datatype VARCHAR
+Origin with datatype VARCHAR
+Destination with datatype VARCHAR
+
+To view data entries in specific columns of a table, the following syntax is used
+    select column_1, column_2
+    from Flights;
+
+To view ALL rows of a table, the following syntax is used
+    select *
+    from Flights;
+
+Task:
+
+Write a query which does the following
+Let us fetch the entry specifically from 2 columns - 'Passenger_name' and 'Gender'.
+
+Solution:
+select Passenger_name, Gender
+from flights;
+
+┌────────────────┬────────┐
+│ Passenger_name │ Gender │
+├────────────────┼────────┤
+│ Jackson        │ Male   │
+│ Riya           │ Female │
+│ Roy            │ Male   │
+│ Anthony        │ Male   │
+│ Salim          │ Male   │
+│ Dia            │ Female │
+│ Jackson        │ Male   │
+│ Dia            │ Female │
+│ Riya           │ Female │
+│ Betty          │ Female │
+└────────────────┴────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+DISTINCT: 
+In the Flights table, what all 'Origins' exist? The following query should give us the result.
+
+     Select Origin 
+     from Flights;
+
+Solution:
+select distinct origin
+from flights;
+
+┌──────────┐
+│  Origin  │
+├──────────┤
+│ Mumbai   │
+│ London   │
+│ Ohio     │
+│ New York │
+│ Beijing  │
+│ Damascus │
+└──────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+WHERE: 
+The WHERE clause helps us obtain information which meets specific conditions.
+
+In the previous problem, we saw the 'Origins' of flights.
+Let us try and identify flights that originate out of 'Mumbai' using the following syntax.
+
+Solution:
+SELECT * from FLIGHTS
+WHERE origin = 'Mumbai';
+
+┌──────────────┬────────────────┬────────┬────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │ Origin │ Destination │
+├──────────────┼────────────────┼────────┼────────┼─────────────┤
+│ 10001        │ Jackson        │ Male   │ Mumbai │ New York    │
+│ 10002        │ Riya           │ Female │ Mumbai │ Delhi       │
+│ 10004        │ Anthony        │ Male   │ Mumbai │ Cairo       │
+└──────────────┴────────────────┴────────┴────────┴─────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+BETWEEN:
+The BETWEEN clause is used along with WHERE to filter the table based on 2 values.
+
+The values can be text:
+
+select * from Flights
+where passenger_name BETWEEN 'A' AND 'D';
+
+The values can be integers:
+
+select * from Flights
+where passenger_id BETWEEN 10001 AND 10007;
+The values can be dates as well.
+
+Task:
+Let us try the 1st example - Write a query to do the following
+Output all entries from the table
+where passenger_name between 'A' and 'D'
+
+Solution: 
+SELECT * from Flights
+WHERE passenger_name BETWEEN 'A' and 'D';
+
+┌──────────────┬────────────────┬────────┬─────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │ Origin  │ Destination │
+├──────────────┼────────────────┼────────┼─────────┼─────────────┤
+│ 10004        │ Anthony        │ Male   │ Mumbai  │ Cairo       │
+│ 10010        │ Betty          │ Female │ Beijing │ Cairo       │
+└──────────────┴────────────────┴────────┴─────────┴─────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Practice problem
+Let us combine what we have learnt from our 'SELECT', 'DISTINCT' and 'WHERE' queries.
+
+From the 'Flights' table - let us find the following
+
+Where the origin of the flight is 'New York'
+Output the passenger_name and gender
+
+Remember that the column details are as follows
+
+Passenger_id
+Passenger_name
+Gender
+Origin
+Destination
+
+Solution:
+select passenger_name, gender from flights
+where origin = 'New York';
+
+┌────────────────┬────────┐
+│ Passenger_name │ Gender │
+├────────────────┼────────┤
+│ Dia            │ Female │
+│ Jackson        │ Male   │
+└────────────────┴────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Debug this query:
+Let us combine what we have learnt from our 'SELECT', 'DISTINCT' and 'WHERE' queries.
+
+The Query written in the console is trying to do the following.
+
+Where the origin of the flight is 'Mumbai'
+Output the 'Distinct' names of 'Male' passengers
+Debug this query to get the correct output!
+
+Remember that the column details are as follows
+
+Passenger_id
+Passenger_name
+Gender
+Origin
+Destination
+
+Given:
+select passenger_name
+from flights
+where gender = 'Male'
+and origin = 'Mumbai';
+
+Solution:
+select distinct passenger_name
+from flights
+where gender = 'Male'
+and origin = 'Mumbai';
+
+┌────────────────┐
+│ Passenger_name │
+├────────────────┤
+│ Jackson        │
+│ Anthony        │
+└────────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
