@@ -1,0 +1,243 @@
+Rename columns using As:
+
+Before we begin aggregate functions, a useful concept to know is renaming of columns during output.
+
+In SQL, the keyword 'AS' allows you to rename a column or table using an alias.
+Sample syntax:
+
+SELECT employee_id AS 'Serial'
+FROM employee;
+Task
+Write a query to output all from the following columns in the table 'employee'
+
+Rename employee_id as 'Serial'
+Rename employee_name as 'Name'
+Rename department as 'Dept'
+
+Solution:
+select employee_id as 'Serial', employee_name as 'Name', department as 'Dept'
+from employee;
+
+┌────────┬────────────────┬────────────┐
+│ Serial │      Name      │    Dept    │
+├────────┼────────────────┼────────────┤
+│ 1      │ Kayla Thompson │ Sales      │
+│ 2      │ Ethan Chen     │ Operations │
+│ 3      │ Julia Lee      │ Hr         │
+│ 4      │ Marcus Garcia  │ Product    │
+│ 5      │ Samantha Park  │ Operations │
+└────────┴────────────────┴────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+COUNT():
+
+Using the COUNT() function is the most efficient method for determining the number of rows in a table.
+This function accepts the name of a column as a parameter and calculates the total count of non-empty values in that column.
+
+Below is the query to count the rows of the table 'customer'.
+
+SELECT COUNT(*)
+FROM customer;
+However, some rows of a column can be NULL values.
+The query below will provide the count of rows of the table 'customer' for a specified column 'column_1' ignoring the null values.
+
+SELECT COUNT((column_1))
+FROM customer;
+Task
+Write a query to count the rows of the table EMPLOYEE.
+Rename the column header as 'Count'.
+
+Solution:
+select count(EMPLOYEE_id) as 'count'
+from EMPLOYEE;
+
+┌───────┐
+│ count │
+├───────┤
+│ 5     │
+└───────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+MAX() and MIN():
+
+The MAX() and MIN() functions retrieve the maximum and minimum values from a column, correspondingly.
+
+Below is the query to find the highest and lowest age of the customers from the table customer
+
+SELECT MAX(Age)
+FROM customer;
+SELECT MIN(Age)
+FROM customer;
+Task
+Write a query to find the highest and lowest 'Hourly_pay' of the employees from the table 'employee'.
+
+Rename the column header for highest pay as 'max_pay'
+Rename the column header for lowest pay as 'min_pay'
+
+Solution:
+
+select max(Hourly_pay) as 'max_pay' 
+from employee;
+
+select min(Hourly_pay) as 'min_pay'
+from employee;
+
+┌─────────┐
+│ max_pay │
+├─────────┤
+│ 55      │
+└─────────┘
+┌─────────┐
+│ min_pay │
+├─────────┤
+│ 28      │
+└─────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+ROUND():
+
+Let us introduce the ROUND() function as it is routinely used with aggregate functions.
+Sql uses the ROUND() functions to display numeric values rounded to a specified precision.
+The precision parameter indicates the number of decimal places to which the number should be rounded.
+
+The ROUND() function requires two parameters enclosed in parentheses: a column name and an integer value.
+Below is the query to display Total_Purchase rounded to 1 decimal place from the table customer
+
+SELECT ROUND(Total_Purchase, 1)
+FROM CUSTOMER; 
+Task
+Write a query to display the values in the column Taxable_Pay rounded to 2 decimal places from the table employee.
+
+Rename the column header as 'taxable_pay'
+
+Solution:
+
+select round(Taxable_Pay, 2) as 'taxable_pay'
+from employee;
+
+┌─────────────┐
+│ taxable_pay │
+├─────────────┤
+│ 21.35       │
+│ 19.45       │
+│ 40.82       │
+│ 33.29       │
+│ 19.0        │
+└─────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Problem - COUNT() MAX() and MIN()
+You are given a table employee (mentioned below).
+
+┌─────────────┬────────────────┬────────────┬────────────┐
+│ Employee_id │ Employee_Name  │ Department │ Hourly_Pay │
+├─────────────┼────────────────┼────────────┼────────────┤
+│ 1           │ Kayla Thompson │ Sales      │ 44         │
+│ 2           │ Ethan Chen     │ Operations │ 26         │
+│ 3           │ Julia Lee      │ Hr         │ 66         │
+│ 4           │ Marcus Garcia  │ Product    │ 34         │
+│ 5           │ Samantha Park  │ Operations │ 43         │
+│ 6           │ Brandon Kim    │ Operations │ 28         │
+│ 7           │ Olivia Nguyen  │ Sales      │ 30         │
+│ 8           │ Dylan Patel    │ Operations │ 35         │
+│ 9           │ Chloe Davis    │ Hr         │ 31         │
+│ 10          │ Brandon Adams  │ Product    │ 43         │
+└─────────────┴────────────────┴────────────┴────────────┘
+Task
+Write 3 separate queries to output the entries for the following:
+
+Count the number of employees in the department 'Sales'.
+Rename the column header as 'count_sales'
+Maximum Hourly pay for the department 'Operations'.
+Rename the column header as 'ops_max_pay'
+Minimum Hourly pay for the department 'Operations'.
+Rename the column header as 'ops_min_pay'
+
+Solution:
+
+select count(employee_id) as 'count_sales' from employee
+where department = 'Sales';
+
+select max(Hourly_pay) as 'ops_max_pay' from employee
+where department = 'Operations';
+
+select min(Hourly_pay) as 'ops_min_pay' from employee
+where department = 'Operations';
+
+┌─────────────┐
+│ count_sales │
+├─────────────┤
+│ 2           │
+└─────────────┘
+┌─────────────┐
+│ ops_max_pay │
+├─────────────┤
+│ 43          │
+└─────────────┘
+┌─────────────┐
+│ ops_min_pay │
+├─────────────┤
+│ 26          │
+└─────────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Problem-ROUND()
+Write a query to output the following from the employee 'table':
+
+Round the column Payout to 2 decimal places.
+Rename the column header as 'payout'
+
+Solution:
+
+select Round(Payout,2) as 'payout' from employee;
+
+┌────────┐
+│ payout │
+├────────┤
+│ 22.66  │
+│ 6.55   │
+│ 25.18  │
+│ 0.71   │
+│ 24.01  │
+│ 5.48   │
+│ 18.56  │
+│ 13.65  │
+│ 18.74  │
+│ 19.82  │
+└────────┘
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+Debug this query
+The Query written in the console is trying to find the minimum and maximum value of payout rounded to 2 decimal places in the table employee.
+Debug this query to output the minimum and maximum value of payout, rounded to 2 decimal places.
+
+Your database is named 'employee' and has the following columns
+
+Id (INT)
+Name (VARCHAR),
+Email (VARCHAR),
+Payout(INT)
+
+Question:
+
+select round(Payout,1) as 'min_pay',
+    round(Payout,1) as 'max_pay'
+from employee;
+
+Solution:
+
+select min(round(Payout,2)) as 'min_pay', max(round(Payout,2)) as 'max_pay'
+from employee;
+
+┌─────────┬─────────┐
+│ min_pay │ max_pay │
+├─────────┼─────────┤
+│ 123.54  │ 789.43  │
+└─────────┴─────────┘
+
